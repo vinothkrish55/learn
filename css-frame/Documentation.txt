@@ -1,0 +1,69 @@
+SCSS & SASS :
+=============
+
+1. Preprocessoring :-
+---------------------
+
+
+2. Variable :-
+--------------
+
+3. Operator :-
+--------------
+
+4. Extends / Inheritance :-
+---------------------------
+
+5. Mixins :-
+------------
+
+
+6. Nesting :-
+-------------
+
+7. Import :-
+------------
+
+8. Partials :-
+--------------
+
+CSS Variable :
+--------------
+
+Syntax : var (custom-name, value);
+Example :-
+--------- 
+:root { --primary-color: blue; }
+div {
+	background-color: var(--primary-color);
+	color: var(--primary-color);
+}
+
+
+Grid CSS :
+----------
+
+1. 
+
+
+CSS User Interface :
+--------------------
+1. 
+
+CSS Flexbox :
+-------------
+
+1. 
+
+CSS Multi Column :
+------------------
+
+1. column-count
+2. column-gap
+3. column-rule ( Indicates Border )
+4. column-rule-color ( Indicates Border )
+5. column-rule-style ( Indicates Border )
+6. column-rule-width ( Indicates Border )
+7. column-span
+8. column-width
+

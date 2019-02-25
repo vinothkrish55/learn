@@ -1,0 +1,79 @@
+﻿body {
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: 0.4px;
+}
+.container {
+    border-left: 5px solid #1782cf;
+    border-right: 5px solid #1782cf;
+    border-bottom: 5px solid #1782cf;
+}
+.frame-title {
+    text-align: center;
+    font-size: 2.4rem;
+    line-height: 3rem;
+    font-weight: 300;  
+    background-color: #1782cf;
+    color: #ffffff;
+    padding: 7px 15px;
+    margin: 0 -15px;
+    display: none;
+}
+.container-middle {
+    padding: 1rem 0rem 0rem;
+}
+h1 {
+    font-size: 1.6rem;
+    position: relative;
+    margin: 0;
+    letter-spacing: 1px;
+    font-weight: 700;
+}
+h1 span {
+    background-color: #1782cf;
+    color: #ffffff;
+    padding: 0.5rem 0.7rem;    
+    border-left: 0.6rem solid #ffd800;
+    display: inline-block;
+    margin-bottom: 1rem;
+}
+.card-header, table th {
+    color: #444444;
+    text-transform: uppercase;    
+    font-weight: 700;
+}
+table th {
+    font-size: 0.8rem;
+    background-color: #fafafa;
+}
+.card-header {
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+}
+.card-header span.accordion-arrow {
+    float: right;
+    height: 36px;
+    width: 36px;
+    background-image: url('../image/arrow-down.png');
+    background-size: 36px 36px;
+}
+.card-header.collapsed  span.accordion-arrow  {
+    background-image: url('../image/arrow-up.png');    
+}
+.th-info {
+    font-size: 12px;
+    font-weight: 600;
+    text-align: left;
+    margin-top: 15px;
+    text-transform: capitalize;
+    line-height: 20px;
+}
+table.table-bordered {
+    margin: 0;
+}
+.accordion .card-body {
+    margin-bottom: 1.5rem;
+}
+.card-body .display-4 {
+    font-size: 1.5rem;
+}

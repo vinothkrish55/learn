@@ -1,0 +1,469 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>CSS Framework</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/bootstrap-4.2.1.css" />
+    <link rel="stylesheet" href="css/style.css" />
+
+    <!-- Script -->
+    <script src="js/jquery-3.3.1.slim.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap-4.2.1.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="frame-title">CSS Walkthrough</div>
+        <div class="container-middle">
+
+            <div class="accordion" id="framework-overview">
+
+                <!-- CSS Framework -->
+                <div class="card">
+                    <div class="card-header" id="headingCSS" data-toggle="collapse" data-target="#collapseCSS" aria-expanded="true" aria-controls="collapseCSS">
+                        Comparision of CSS, SCSS & SASS <span class="accordion-arrow"></span>
+                    </div>
+                    <div id="collapseCSS" class="collapse show" aria-labelledby="headingCSS" data-parent="#framework-overview">
+                        <div class="card-body">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Title</th>
+                                        <th>CSS</th>
+                                        <th>SCSS</th>
+                                        <th>SASS</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th>Variables</th>
+                                        <td>
+                                            <code>
+                                                body {<br />
+                                                &nbsp;&nbsp;&nbsp;font: 100% Helvetica, sans-serif;<br />
+                                                &nbsp;&nbsp;&nbsp;color: #333;<br />
+                                                &nbsp;&nbsp;&nbsp;width: 5em;<br />
+                                                }
+                                            </code>
+                                        </td>
+                                        <td>
+                                            <code>
+                                                $font-stack: Helvetica, sans-serif<br />
+                                                $primary-color: #333<br /><br />
+
+                                                body {<br />
+                                                &nbsp;&nbsp;&nbsp;font: 100% $font-stack<br />
+                                                &nbsp;&nbsp;&nbsp;color: $primary-color<br />
+                                                &nbsp;&nbsp;&nbsp;$width: 5em !global;<br />
+                                                &nbsp;&nbsp;&nbsp;width: $width;<br />
+                                                }<br /><br />
+                                                <span class="alert alert-info d-inline-block" role="alert">
+                                                    <strong>!global:</strong> Variables are only available within the level of nested selectors where they're defined. If they're defined outside of any nested selectors, they're available everywhere. They can also be defined with the !global flag, in which case they're also available everywhere.
+                                                </span>
+                                            </code>
+                                        </td>
+                                        <td>
+                                            <code>
+                                                $font-stack: Helvetica, sans-serif<br />
+                                                $primary-color: #333<br /><br />
+
+                                                body<br />
+                                                &nbsp;&nbsp;&nbsp;font: 100% $font-stack<br />
+                                                &nbsp;&nbsp;&nbsp;color: $primary-color<br />
+                                                &nbsp;&nbsp;&nbsp;$width: 5em !global;<br />
+                                                &nbsp;&nbsp;&nbsp;width: $width;<br /><br />
+
+                                                <span class="alert alert-info d-inline-block" role="alert">
+                                                    <strong>!global:</strong> Variables are only available within the level of nested selectors where they're defined. If they're defined outside of any nested selectors, they're available everywhere. They can also be defined with the !global flag, in which case they're also available everywhere.
+                                                </span>
+                                            </code>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Nesting</th>
+                                        <td>
+                                            <code>
+                                                nav ul {<br />
+                                                &nbsp;&nbsp;&nbsp;margin: 0;<br />
+                                                &nbsp;&nbsp;&nbsp;padding: 0;<br />
+                                                &nbsp;&nbsp;&nbsp;list-style: none;<br />
+                                                }<br /><br />
+                                                nav li {<br />
+                                                &nbsp;&nbsp;&nbsp;display: inline-block;<br />
+                                                }<br /><br />
+                                                nav a {<br />
+                                                &nbsp;&nbsp;&nbsp;display: block;<br />
+                                                &nbsp;&nbsp;&nbsp;padding: 6px 12px;<br />
+                                                &nbsp;&nbsp;&nbsp;text-decoration: none;<br />
+                                                }
+                                            </code>
+                                        </td>
+                                        <td>
+                                            <code>
+                                                nav {<br />
+                                                &nbsp;&nbsp;&nbsp;ul {<br />
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;margin: 0;<br />
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;padding: 0;<br />
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;list-style: none;<br />
+                                                &nbsp;&nbsp;&nbsp;}<br /><br />
+
+                                                &nbsp;&nbsp;&nbsp;li {<br />
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;display: inline-block;<br />
+                                                &nbsp;&nbsp;&nbsp;}<br /><br />
+
+                                                &nbsp;&nbsp;&nbsp;a {<br />
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;display: block;<br />
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;padding: 6px 12px;<br />
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text-decoration: none;<br /><br />
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&:hover {<br />
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;color: red<br />
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+                                                &nbsp;&nbsp;&nbsp;}<br />
+                                                }<br /><br />
+
+                                                <span class="alert alert-info d-inline-block" role="alert">
+                                                    <strong>&:</strong> Referencing Parent Selectors
+                                                </span>
+                                            </code>
+                                        </td>
+                                        <td>
+                                            <code>
+                                                nav<br />
+                                                &nbsp;&nbsp;&nbsp;ul<br />
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;margin: 0<br />
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;padding: 0<br />
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;list-style: none<br /><br />
+
+                                                &nbsp;&nbsp;&nbsp;li<br />
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;display: inline-block<br /><br />
+
+                                                &nbsp;&nbsp;&nbsp;a<br />
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;display: block<br />
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;padding: 6px 12px<br />
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text-decoration: none<br /><br />
+                                                &nbsp;&nbsp;&nbsp;&:hover<br />
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;color: red<br /><br />
+
+                                                <span class="alert alert-info d-inline-block" role="alert">
+                                                    <strong>&:</strong> Referencing Parent Selectors
+                                                </span>
+                                            </code>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Import</th>
+                                        <td>
+                                            <code>
+                                                html, body, ul, ol {<br />
+                                                &nbsp;&nbsp;&nbsp;margin:  0;<br />
+                                                &nbsp;&nbsp;&nbsp;padding: 0;<br />
+                                                }<br /><br />
+
+                                                body {<br />
+                                                &nbsp;&nbsp;&nbsp;font: 100% Helvetica, sans-serif;<br />
+                                                &nbsp;&nbsp;&nbsp;background-color: #efefef;<br />
+                                                }
+                                            </code>
+                                        </td>
+                                        <td>
+                                            <code>
+                                                // _reset.scss<br /><br />
+
+                                                html, body, ul, ol {<br />
+                                                &nbsp;&nbsp;&nbsp;margin:  0;<br />
+                                                &nbsp;&nbsp;&nbsp;padding: 0;<br />
+                                                }<br /><br />
+
+                                                // base.scss<br /><br />
+
+                                                @import 'reset';<br /><br />
+
+                                                body {<br />
+                                                &nbsp;&nbsp;&nbsp;font: 100% Helvetica, sans-serif;<br />
+                                                &nbsp;&nbsp;&nbsp;background-color: #efefef;<br />
+                                                }
+                                            </code>
+                                        </td>
+                                        <td>
+                                            <code>
+                                                // _reset.sass<br /><br />
+
+                                                html, body, ul, ol<br />
+                                                &nbsp;&nbsp;&nbsp;margin:  0<br />
+                                                &nbsp;&nbsp;&nbsp;padding: 0<br /><br />
+
+                                                // base.sass<br /><br />
+
+                                                @import reset<br /><br />
+
+                                                body<br />
+                                                &nbsp;&nbsp;&nbsp;font: 100% Helvetica, sans-serif<br />
+                                                &nbsp;&nbsp;&nbsp;background-color: #efefef<br />
+                                            </code>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Mixins</th>
+                                        <td>
+                                            <code>
+                                                .box {<br />
+                                                &nbsp;&nbsp;&nbsp;-webkit-transform: rotate(30deg);<br />
+                                                &nbsp;&nbsp;&nbsp;-ms-transform: rotate(30deg);<br />
+                                                &nbsp;&nbsp;&nbsp;transform: rotate(30deg);<br />
+                                                }
+                                            </code>
+                                        </td>
+                                        <td>
+                                            <code>
+                                                @mixin transform($property) {<br />
+                                                &nbsp;&nbsp;&nbsp;-webkit-transform: $property;<br />
+                                                &nbsp;&nbsp;&nbsp;-ms-transform: $property;<br />
+                                                &nbsp;&nbsp;&nbsp;transform: $property;<br />
+                                                }<br /><br />
+
+                                                .box {<br />
+                                                &nbsp;&nbsp;&nbsp;@include transform(rotate(30deg));<br />
+                                                }<br />
+                                            </code>
+                                        </td>
+                                        <td>
+                                            <code>
+                                                &nbsp;&nbsp;&nbsp;=transform($property)<br />
+                                                &nbsp;&nbsp;&nbsp;-webkit-transform: $property<br />
+                                                &nbsp;&nbsp;&nbsp;-ms-transform: $property<br />
+                                                &nbsp;&nbsp;&nbsp;transform: $property<br /><br />
+
+                                                .box<br />
+                                                &nbsp;&nbsp;&nbsp;+transform(rotate(30deg))<br />
+                                            </code>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            Extend/Inheritance
+                                            <div class="alert alert-warning th-info" role="alert">
+                                                Extends having following types :<br />
+                                                1. Chaining Extends<br />
+                                                2. Multiple Extends
+                                            </div>
+                                        </th>
+                                        <td>
+                                            <code>
+                                                /* This CSS will print because %message-shared is extended. */<br /><br />
+                                                .message, .success, .error, .warning {<br />
+                                                &nbsp;&nbsp;&nbsp;border: 1px solid #ccc;<br />
+                                                &nbsp;&nbsp;&nbsp;padding: 10px;<br />
+                                                &nbsp;&nbsp;&nbsp;color: #333;<br />
+                                                }<br /><br />
+
+                                                .success {<br />
+                                                &nbsp;&nbsp;&nbsp;border-color: green;<br />
+                                                }<br /><br />
+
+                                                .error {<br />
+                                                &nbsp;&nbsp;&nbsp;border-color: red;<br />
+                                                }<br /><br />
+
+                                                .warning {<br />
+                                                &nbsp;&nbsp;&nbsp;border-color: yellow;<br />
+                                                }
+                                            </code>
+                                        </td>
+                                        <td>
+                                            <code>
+                                                /* This CSS will print because %message-shared is extended. */<br /><br />
+                                                %message-shared {<br />
+                                                &nbsp;&nbsp;&nbsp;border: 1px solid #ccc;<br />
+                                                &nbsp;&nbsp;&nbsp;padding: 10px;<br />
+                                                &nbsp;&nbsp;&nbsp;color: #333;<br />
+                                                }<br /><br />
+
+                                                // This CSS won't print because %equal-heights is never extended.<br /><br />
+                                                %equal-heights {<br />
+                                                &nbsp;&nbsp;&nbsp;display: flex;<br />
+                                                &nbsp;&nbsp;&nbsp;flex-wrap: wrap;<br />
+                                                }<br /><br />
+
+                                                .message {<br />
+                                                &nbsp;&nbsp;&nbsp;@extend %message-shared;<br />
+                                                }<br /><br />
+
+                                                .success {<br />
+                                                &nbsp;&nbsp;&nbsp;@extend %message-shared;<br />
+                                                &nbsp;&nbsp;&nbsp;border-color: green;<br />
+                                                }<br /><br />
+
+                                                .error {<br />
+                                                &nbsp;&nbsp;&nbsp;@extend %message-shared;<br />
+                                                &nbsp;&nbsp;&nbsp;border-color: red;<br />
+                                                }<br /><br />
+
+                                                .warning {<br />
+                                                &nbsp;&nbsp;&nbsp;@extend %message-shared;<br />
+                                                &nbsp;&nbsp;&nbsp;border-color: yellow;<br />
+                                                }
+                                            </code>
+                                        </td>
+                                        <td>
+                                            <code>
+                                                /* This CSS will print because %message-shared is extended. */<br /><br />
+                                                %message-shared<br />
+                                                &nbsp;&nbsp;&nbsp;border: 1px solid #ccc<br />
+                                                &nbsp;&nbsp;&nbsp;padding: 10px<br />
+                                                &nbsp;&nbsp;&nbsp;color: #333<br /><br />
+
+
+                                                // This CSS won't print because %equal-heights is never extended.<br /><br />
+                                                %equal-heights<br />
+                                                &nbsp;&nbsp;&nbsp;display: flex<br />
+                                                &nbsp;&nbsp;&nbsp;flex-wrap: wrap<br /><br />
+
+                                                .message<br />
+                                                &nbsp;&nbsp;&nbsp;@extend %message-shared<br /><br />
+
+                                                .success<br />
+                                                &nbsp;&nbsp;&nbsp;@extend %message-shared<br />
+                                                &nbsp;&nbsp;&nbsp;border-color: green<br /><br />
+
+                                                .error<br />
+                                                &nbsp;&nbsp;&nbsp;@extend %message-shared<br />
+                                                &nbsp;&nbsp;&nbsp;border-color: red<br /><br />
+
+                                                .warning<br />
+                                                &nbsp;&nbsp;&nbsp;@extend %message-shared<br />
+                                                &nbsp;&nbsp;&nbsp;border-color: yellow
+                                            </code>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Operators</th>
+                                        <td>
+                                            <code>
+                                                .container {<br />
+                                                &nbsp;&nbsp;&nbsp;width: 100%;<br />
+                                                }<br /><br />
+
+                                                article[role="main"] {<br />
+                                                &nbsp;&nbsp;&nbsp;float: left;<br />
+                                                &nbsp;&nbsp;&nbsp;width: 62.5%;<br />
+                                                }<br /><br />
+
+                                                aside[role="complementary"] {<br />
+                                                &nbsp;&nbsp;&nbsp;float: right;<br />
+                                                &nbsp;&nbsp;&nbsp;width: 31.25%;<br />
+                                                }
+                                            </code>
+                                        </td>
+                                        <td>
+                                            <code>
+                                                .container {<br />
+                                                &nbsp;&nbsp;&nbsp;width: 100%;<br />
+                                                }<br /><br />
+
+                                                article[role="main"] {<br />
+                                                &nbsp;&nbsp;&nbsp;float: left;<br />
+                                                &nbsp;&nbsp;&nbsp;width: 600px / 960px * 100%;<br />
+                                                }<br /><br />
+
+                                                aside[role="complementary"] {<br />
+                                                &nbsp;&nbsp;&nbsp;float: right;<br />
+                                                &nbsp;&nbsp;&nbsp;width: 300px / 960px * 100%;<br />
+                                                }
+                                            </code>
+                                        </td>
+                                        <td>
+                                            <code>
+                                                .container<br />
+                                                &nbsp;&nbsp;&nbsp;width: 100%<br /><br />
+
+                                                article[role="main"]<br />
+                                                &nbsp;&nbsp;&nbsp;float: left<br />
+                                                &nbsp;&nbsp;&nbsp;width: 600px / 960px * 100%<br /><br />
+
+                                                aside[role="complementary"]<br />
+                                                &nbsp;&nbsp;&nbsp;float: right<br />
+                                                &nbsp;&nbsp;&nbsp;width: 300px / 960px * 100%
+                                            </code>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CSS & CSS3 -->
+                <div class="card">
+                    <div class="card-header collapsed" id="heading-css3" data-toggle="collapse" data-target="#collapseCss3" aria-expanded="false" aria-controls="collapseCss3">
+                        CSS & CSS3 <span class="accordion-arrow"></span>
+                    </div>
+                    <div id="collapseCss3" class="collapse" aria-labelledby="heading-css3" data-parent="#framework-overview">
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+                                <li><span>1.</span> CSS Border Radius</li>
+                                <li><span>2.</span> CSS Border Images</li>
+                                <li><span>3.</span> CSS Background</li>
+                                <li><span>4.</span> CSS Colors</li>
+                                <li><span>5.</span> CSS Gradients</li>
+                                <li><span>6.</span> CSS Shadows ( Box-shadow & Text Shadow )</li>
+                                <li><span>7.</span> CSS Text Effects ( text-overflow, word-wrap, word-break, writing-mode )</li>
+                                <li><span>8.</span> CSS Web Fonts ( @font-face, font-family, src, font-weight, font-style )</li>
+                                <li><span>9.</span> CSS 2D Transforms ( translate(), rotate(), scale(), skewX(), skewY(), matrix() )</li>
+                                <li><span>10.</span> CSS 3D Transforms ( rotateX(), rotateY(), rotateZ() )</li>
+                                <li><span>11.</span> CSS Transitions</li>
+                                <li><span>12.</span> CSS Animations</li>
+                                <li><span>13.</span> CSS Tooltips</li>
+                                <li><span>14.</span> CSS Style Images</li>
+                                <li><span>15.</span> CSS object-fit</li>
+                                <li><span>16.</span> CSS Buttons</li>
+                                <li><span>17.</span> CSS Pagination</li>
+                                <li><span>18.</span> CSS Multiple Columns ( column-count, column-gap, column-rule-style, column-rule-width, column-rule-color, column-rule, column-span, column-width )</li>
+                                <li><span>19.</span> CSS User Interface</li>
+                                <li><span>20.</span> CSS Variables</li>
+                                <li><span>21.</span> CSS Box Sizing</li>
+                                <li><span>22.</span> CSS Flexbox ( flex-direction, flex-wrap, flex-flow, justify-content, align-items, align-content )</li>
+                                <li><span>23.</span> CSS Media Queries</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Grid CSS -->
+                <div class="card">
+                    <div class="card-header collapsed" id="heading-cssgrid" data-toggle="collapse" data-target="#collapseCssgrid" aria-expanded="false" aria-controls="collapseCssgrid">
+                        CSS Grid <span class="accordion-arrow"></span>
+                    </div>
+                    <div id="collapseCssgrid" class="collapse" aria-labelledby="heading-cssgrid" data-parent="#framework-overview">
+                        <div class="card-body">
+                            <h4 class="mb-3 display-4"><span>1.</span> Grid Intro</h4>
+                            <!-- grid-template-columns: auto auto auto; -- split item and auto will cover full width and value length is item shown per section -->
+                            <!-- Display Grid -->
+                            <div>i)  display (grid/inline-grid)</div>
+                            <!-- Gap Grid -->
+                            <div>ii) grid-column-gap</div>
+                            <div>iii)grid-row-gap</div>
+                            <div>iv) grid-gap</div>
+
+                            <!-- Grid Container -->
+                            <h4 class="mt-4 mb-3 display-4"><span>2.</span> Grid Container</h4>
+                            <div>v)   grid-template-rows Property</div>
+                            <div>vi)  The justify-content Property & The align-content Property<br />
+                                ( This should detetermined outer parent element [justify-content & align-content: space-evenly, space-around, space-between, center, start, end])</div>
+
+                            <!-- Grid Item -->
+                            <h4 class="mt-4 mb-3 display-4"><span>3.</span> Grid Item</h4>
+                            <div>vii) The grid-column Property:</div>
+                            <div>viii) The grid-row Property</div>
+                            <div>ix) The grid-area Property</div>
+                            <div>x) Naming Grid Items</div>
+                            <div>xi) The Order of the Items</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
